@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% block style %}
+<style media="screen">
+  body{
+    background-image: url({% static 'images/book11.jpg'%});
+    background-size: cover;
+
+  }
+  input{
+    margin:10px 0px 10px 0px;
+  }
+</style>
+{% endblock %}
+{% block Body %}\
+<br><br><br><br><br>
+<center><h2 style='color:white;font-weight:bold;font-size:40px;'>The List of all Stores</h2></center>
+{% for a in Storebook %}
+<div>
+<div class="col-lg-1 fade-up"></div>
+<div class="col-lg-10 fade-up jumbotron" style="margin:10px 10px 10px 10px;padding:20px 30px 20px 30px;border-radius:15px;">
+					<center><a href="{% url 'info' user_name=a.username %}" style="font-weight:bold;font-size:20px;" >
+            {{a.username}}</a></center>
+				</div><!-- col -->
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block style %}
+<link href="{% static 'css/SignUp.css' %}" rel="stylesheet">
+<style media="screen">
+  body{
+    background-image: url({% static 'images/back01.jpg'%});
+    background-size: cover;
+    color:white;
+  }
+
+</style>
+{% endblock %}
+{% block Body %}
+<div class="main-w3layouts wrapper">
+		<center><h1  style='color:white;margin-top:40px;'>Register for a user</h1>
+    <a href="{% url 'Store_User' %}">Click here to register as Store</a></center>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form action="#" method="POST">
+          	{% csrf_token %}
+          {% for field in form %}
+          {{ field.label_tag }}
+                        {{ field }}
+                        {{ field.errors }}
+                        {% endfor %}
+					<!--input class="text" type="text" name="Username" placeholder="Username" required="">
+					<input class="text email" type="email" name="email" placeholder="Email" required="">
+					<input class="text" type="password" name="password" placeholder="Password" required="">
+					<input class="text w3lpass" type="password" name="password" placeholder="Confirm Password" required=""-->
+					<div class="wthree-text">
+
+						<div class="clear"> </div>
+					</div>
+					<input type="submit" value="SIGNUP">
+				</form>
+				<p>Already have an Account? <a href="login"> Login Now!</a></p>
+			</div>
+		</div>
+
+
+	</div>
+  {% endblock %}

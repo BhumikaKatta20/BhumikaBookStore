@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% block style %}
+<style media="screen">
+  body{
+    background-image: url({% static 'images/book7.png'%});
+    background-size: cover;
+
+  }
+  input{
+    margin:10px 0px 10px 0px;
+  }
+</style>
+{% endblock %}
+{% block Body %}\
+<br><br><br><br><br>
+<center><h2 style='color:white;font-weight:bold;font-size:45px;'>The List of all Books </h2></center>
+<h4 style="color:black;font-weight:bold;font-size:30px;margin:5% 10px 10px 5%;"> {{msg}}</h4>
+{% for a in BookInStore %}
+<div style="margin:30px 5% 30px 15%;">
+
+    <div class="col-lg-3 fade-up jumbotron" style="margin:10px 10px 10px 10px;height:170px;padding:20px 30px 20px 30px;border-radius:15px;">
+					<center><a href="{% url 'Update_record' id=a.id %}" style="font-weight:bold;font-size:22px;" >
+            {{a.Book}}</a>
+          <p style="font-size:15px;">Author: {{a.Author}}</p>
+          {% if 0 == a.Quantity %}
+          <p style="font-size:15px;font-weight:bold;">Out of Stock</p></center>
+          {% else %}
+        <p style="font-size:15px;font-weight:bold;">{{a.Quantity}} in Stock</p></center>
+        {% endif %}
+			</div><!-- col -->
+
+</div>
+
+
+{% endfor %}
+{% endblock %}

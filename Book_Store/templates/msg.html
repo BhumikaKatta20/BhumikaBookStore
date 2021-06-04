@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% block style %}
+<style media="screen">
+  body{
+    background-image: url({% static 'images/back5.jpg'%});
+    background-size: cover;
+
+  }
+  input{
+    margin:10px 0px 10px 0px;
+  }
+</style>
+{% endblock %}
+{% block Body %}
+<br><br><br><br>
+<center><h1 style="color:white;margin-bottom:30px;">{{msg}}</h1></center>
+  </form>
+</div>
+{% endblock %}

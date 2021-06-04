@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% load staticfiles %}
+    <title>Book Store</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/elusive-webfont.css' %}">
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+  {% block style %}
+  {% endblock %}
+  </head>
+  <body data-spy="scroll" data-offset="0" data-target="#navbar-main">
+  	<div id="navbar-main" >
+      <!-- Fixed navbar -->
+	    <div class="navbar navbar-default navbar-fixed-top" style="background-color:white;">
+	      <div class="container">
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	          	<i class="el-icon-lines"></i>
+	          </button>
+	          <a class="navbar-brand hidden-xs hidden-sm" href="{% url 'index' %}"><h1> Book Store</h1></a>
+	        </div>
+	        <div class="navbar-collapse collapse">
+	          	<ul class="nav navbar-nav">
+                {% if user.is_staff %}
+                <li><a href="{% url 'AddNewBook' %}" class="smoothScroll">Add New Book</a></li>
+                <li><a href="{% url 'Update_list' %}" class="smoothScroll">Update</a></li>
+                <li><a href="{% url 'Delete_book' %}" class="smoothScroll"> Delete a book</a></li>
+
+                <li><a href="{% url 'logout' %}" class="smoothScroll">Logout</a></li>
+                {% elif user.is_authenticated %}
+
+                <li><a href="{% url 'logout' %}" class="smoothScroll">*buy the book(-1 in count)*</a></li>
+                <li><a href="{% url 'view_Stores' %}" class="smoothScroll">View stores</a></li>
+                <li><a href="{% url 'logout' %}" class="smoothScroll">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'SignUp' %}" class="smoothScroll">Sign Up</a></li>
+                <li><a href="{% url 'login' %}" class="smoothScroll">Login</a></li>
+                {% endif %}
+				     </ul>
+	        </div><!--/.nav-collapse -->
+	      </div>
+	    </div>
+    </div>
+
+{% block Body %}
+
+		<!-- ==== HEADERWRAP ==== -->
+	    <div id="headerwrap" id="home" name="home" style="  background-image: url({% static 'images/book.jpg'%});
+        background-size: cover;">
+			<header class="clearfix">
+	  		 		<h1 class="animated bounceIn">The Book Store</h1>
+	  		</header>
+	    </div><!-- /headerwrap -->
+
+{% endblock %}
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/plugins.js"></script>
+	<script type="text/javascript" src="js/init.js"></script>
+  </body>
+</html>
